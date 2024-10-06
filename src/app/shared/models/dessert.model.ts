@@ -1,5 +1,5 @@
 export interface IDessert {
-   image: {
+    image: {
             thumbnail: string,
             mobile: string,
             tablet: string,

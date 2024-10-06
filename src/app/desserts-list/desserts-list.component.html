@@ -1,1 +1,9 @@
-<p>desserts-list works!</p>
+@for( dessert of desserts; track dessert.name) {
+  <div class="card" style="width: 18rem;">
+    <img [src]="dessert.image.desktop" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ dessert.name }}</h5>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+}
