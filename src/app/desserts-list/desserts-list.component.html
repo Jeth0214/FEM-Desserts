@@ -1,9 +1,14 @@
+<div class="row">
 @for( dessert of desserts; track dessert.name) {
-  <div class="card" style="width: 18rem;">
-    <img [src]="dessert.image.desktop" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ dessert.name }}</h5>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card" >
+          <img [src]="dessert.image.tablet" class="card-img-top img-fluid" [alt]="dessert.name">
+          <div class="card-body">
+            <h5 class="card-title">{{ dessert.name }}</h5>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
     </div>
-  </div>
-}
+    
+  }
+</div>
