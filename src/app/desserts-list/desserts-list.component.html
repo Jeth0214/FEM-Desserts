@@ -1,11 +1,18 @@
 <div class="row">
 @for( dessert of desserts; track dessert.name) {
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-4 mb-2">
         <div class="card" >
-          <img [src]="dessert.image.tablet" class="card-img-top img-fluid" [alt]="dessert.name">
+          <picture>
+            <source [srcset]="dessert.image.mobile" media="(max-width: 600px)">
+            <source [srcset]="dessert.image.tablet" media="(min-width: 600px)">
+            <source [srcset]="dessert.image.desktop" media="(min-width: 1100px)">
+            <img [src]="dessert.image.tablet" class="card-img-top img-fluid" [alt]="dessert.name">
+          </picture>
           <div class="card-body">
+            <p class="text-secondary mb-0">{{dessert.category}}</p>
             <h5 class="card-title">{{ dessert.name }}</h5>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="text-danger fw-bold">{{dessert.price | currency : 'USD'}}</p>
+            <button  class="btn btn-outline-danger btn-sm  rounded-pill">Add to Cart</button>
           </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { IDessert } from '../shared/models/dessert.model';
 import { CommonModule } from '@angular/common';
 
