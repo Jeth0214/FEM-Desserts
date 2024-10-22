@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { IDessert } from '../shared/models/dessert.model';
 import { CommonModule } from '@angular/common';
 
@@ -10,5 +10,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './desserts-list.component.scss'
 })
 export class DessertsListComponent {
-  @Input() desserts: IDessert[] = []; 
+  @Input() dessert: IDessert | undefined;
+  @Output() addedDesserts = new EventEmitter();
+  @Output() removeDesserts = new EventEmitter();
+
+  quantity: number = 0;
+
+  onAddToCart(dessert: IDessert) {
+    this.quantity++;
+    this.addedDesserts.emit(dessert);
+  }
+
+  onRemoveFromCart(dessert: IDessert) {
+    this.quantity--;
+    this.removeDesserts.emit(dessert);
+   }
+  
 }

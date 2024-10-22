@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { DessertsListComponent } from '../desserts-list/desserts-list.component';
-import { DessertsCheckoutComponent } from '../desserts-checkout/desserts-checkout.component';
 import { IDessert } from '../shared/models/dessert.model';
 import { DessertsService } from '../shared/services/desserts.service';
+import { DessertCartComponent } from '../dessert-cart/dessert-cart.component';
 
 @Component({
   selector: 'app-desserts',
   standalone: true,
-  imports: [DessertsListComponent, DessertsCheckoutComponent],
+  imports: [DessertsListComponent, DessertCartComponent],
   templateUrl: './desserts.component.html',
   styleUrl: './desserts.component.scss'
 })
@@ -17,6 +17,5 @@ export class DessertsComponent {
 
   constructor() {
     this._dessertsService.getDesserts().subscribe(desserts => this.desserts = desserts);
-    console.log(this.desserts);
   }
 }

@@ -1,7 +1,5 @@
-<div class="row">
-@for( dessert of desserts; track dessert.name) {
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="card" >
+@if(dessert) {
+        <div class="card">
           <picture>
             <source [srcset]="dessert.image.mobile" media="(max-width: 600px)">
             <source [srcset]="dessert.image.tablet" media="(min-width: 600px)">
@@ -10,12 +8,30 @@
           </picture>
           <div class="card-body">
             <p class="text-secondary mb-0">{{dessert.category}}</p>
-            <h5 class="card-title">{{ dessert.name }}</h5>
+            <h3 class="card-title h6">{{ dessert.name }}</h3>
             <p class="text-danger fw-bold">{{dessert.price | currency : 'USD'}}</p>
-            <button  class="btn btn-outline-danger btn-sm  rounded-pill">Add to Cart</button>
+        
+            <!--  buttons -->
+            @if(quantity <= 0) { <button class="btn btn-outline-danger  rounded-pill py- px-3" role="button"
+              (click)="onAddToCart(dessert)">Add to Cart</button>
+              }
+              @else {
+              <div class="bg-danger d-inline-block py-2 px-3 rounded-pill text-white">
+                <button class="border-0 bg-danger text-white" role="button" (click)="onRemoveFromCart(dessert)">
+                  <span class="visually-hidden">button to remove order</span>
+                  <i class="fa-solid fa-circle-minus"></i>
+                </button>
+        
+                <span class="mx-3">{{quantity}}</span>
+                <button class="border-0 bg-danger text-white" role="button" (click)="onAddToCart(dessert)">
+                  <span class="visually-hidden">button to add order</span>
+                  <i class="fa-solid fa-circle-plus"></i>
+                </button>
+              </div>
+              }
+        
+        
           </div>
         </div>
-    </div>
-    
-  }
-</div>
+}
+

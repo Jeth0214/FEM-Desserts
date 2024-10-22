@@ -1,6 +1,7 @@
 import { IDessert } from "./dessert.model";
 
-export interface IOrder {
+export interface ICart {
   dessert: IDessert;
   quantity: number;
+  subtotal: number;
 }

@@ -1,14 +1,19 @@
 <div class="my-5 container">
 
-  <header><h1>Desserts</h1></header>
   <div class="row justify-content-between">
-    <div class="col-12 col-md-10">
-      <app-desserts-list [desserts]="desserts" />
+    <div class="col-12 col-lg-9">
+      <header><h1>Desserts</h1></header>
+      <div class="row">
+        @for( dessert of desserts; track dessert.name) {
+        <div class="col-12 col-md-4 mb-3">
+            <app-desserts-list [dessert]="dessert" />
+          </div>
+        }
+      </div>
 
     </div>
-    <div class="col-12 col-md-2">
-
-      <app-desserts-checkout />
+    <div class="col-12 col-lg-3">
+      <app-dessert-cart />
     </div>
   </div>
 </div>
