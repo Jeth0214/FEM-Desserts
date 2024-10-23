@@ -1,19 +1,49 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { ICart } from '../models/cart.model';
+import { ICartItem } from '../models/cart.model';
+import { IDessert } from '../models/dessert.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  // Cart Items siganl
-  cartItems = signal<ICart[]>([]);
+  // Cart Items signal
+  cartItems = signal<ICartItem[]>([]);
 
   totalPrice = computed(() => this.cartItems().reduce(
     (total, item) => total + item.subtotal, 0
   ))
 
   // add item to the cart
-  // if item is already in cart , add quantity to item
+  addToCart(dessert: IDessert):void {
+      let newItem: ICartItem = {
+      dessert: dessert,
+      quantity: 1,
+      subtotal: dessert.price
+    }
+    this.cartItems.update(items => [...items, newItem]);
+   
+  }
+
+  // remove item from cart
+  removeFromCart(cartItem: IDessert ): void {
+    this.cartItems.update( items => items.filter( item => item.dessert.name !== cartItem.name))
+  }
+
+  // update item's  quantity
+  updateCartItem(dessert: IDessert, quantity: number): void {
+    if (!quantity) {
+      this.removeFromCart(dessert)
+    } else {
+      let updatedItem: ICartItem = {
+        dessert: dessert,
+        quantity: quantity,
+        subtotal: +quantity * dessert.price
+      }
+      this.cartItems.update(items => items.map(
+        item => item.dessert.name === dessert.name ? updatedItem : item))
+    }
+   }
   
+
 }

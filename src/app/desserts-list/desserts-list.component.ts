@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { IDessert } from '../shared/models/dessert.model';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../shared/services/cart.service';
 
 @Component({
   selector: 'app-desserts-list',
@@ -12,18 +13,20 @@ import { CommonModule } from '@angular/common';
 export class DessertsListComponent {
   @Input() dessert: IDessert | undefined;
   @Output() addedDesserts = new EventEmitter();
-  @Output() removeDesserts = new EventEmitter();
+
+  // Dependency Injection
+  _cartService = inject(CartService);
 
   quantity: number = 0;
 
   onAddToCart(dessert: IDessert) {
     this.quantity++;
-    this.addedDesserts.emit(dessert);
+    this._cartService.addToCart(dessert)
   }
 
-  onRemoveFromCart(dessert: IDessert) {
-    this.quantity--;
-    this.removeDesserts.emit(dessert);
+  onUpdateQuantity(dessert: IDessert, action: string) {
+    action === 'add' ? this.quantity++ : this.quantity--;
+    this._cartService.updateCartItem(dessert, this.quantity)
    }
   
 }

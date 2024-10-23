@@ -1,3 +1,6 @@
 <div>
-  <h2 class="text-danger fw-bold">Your Cart (7)</h2>
+  <h2 class="text-danger fw-bold">{{pageTitle}}</h2>
+  @if(cartItems()) {
+    {{cartItems() | json}}
+  }
 </div>
