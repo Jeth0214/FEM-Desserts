@@ -1,7 +1,8 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { CartService } from '../shared/services/cart.service';
 import { ICartItem } from '../shared/models/cart.model';
 import { CommonModule } from '@angular/common';
+import { IDessert } from '../shared/models/dessert.model';
 
 @Component({
   selector: 'app-dessert-cart',
@@ -14,7 +15,10 @@ export class DessertCartComponent {
 
   _cartService = inject(CartService);
   cartItems = this._cartService.cartItems;
-  pageTitle = effect(() => `Your Cart ${this.cartItems.length}`);
+  cartCount = computed(() => this.cartItems().reduce((acc, item) => acc + item.quantity, 0));
 
-  constructor() {console.log(this.cartItems())}
+  removeItem(item: IDessert): void {
+    this._cartService.removeFromCart(item);
+  }
+
 }

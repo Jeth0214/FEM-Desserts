@@ -1,6 +1,29 @@
-<div>
-  <h2 class="text-danger fw-bold">{{pageTitle}}</h2>
+<div class="shadow-sm p-3 mb-5  rounded">
+  <h2 class="text-danger fw-bold">Your Cart ({{cartCount()}})</h2>
   @if(cartItems()) {
-    {{cartItems() | json}}
+    <ul class="list-group border-0 mt-5">
+      @for(item of cartItems(); track item.dessert.name) {
+
+        <li class="list-group-item border-0 border-bottom">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <p class="fw-bold mb-0">{{item.dessert.name}}</p>
+              <div>
+                <span class="text-danger me-3 fw-bold"> 
+                  {{item.quantity}}x
+                </span>
+                 &#64; {{item.dessert.price | currency:'USD'}} {{item.subtotal | currency:'USD'}}
+                </div>
+            </div>
+            <div>
+              <button class="border-0 bg-white" role="button "     aria-label="Close" (click)="removeItem(item.dessert)">
+                <span class="visually-hidden">button to remove item</span>
+                <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
   }
 </div>
