@@ -8,7 +8,7 @@ import { IDessert } from '../models/dessert.model';
 })
 export class DessertsService {
 
-  url: string = 'http://localhost:3000/desserts';
+  url: string = 'api/desserts';
 
   constructor(private http: HttpClient) { }
   
