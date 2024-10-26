@@ -15,6 +15,7 @@ export class DessertCartComponent {
 
   _cartService = inject(CartService);
   cartItems = this._cartService.cartItems;
+  totalPrice = this._cartService.totalPrice;
   cartCount = computed(() => this.cartItems().reduce((acc, item) => acc + item.quantity, 0));
 
   removeItem(item: IDessert): void {
