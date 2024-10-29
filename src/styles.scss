@@ -83,6 +83,7 @@ h6 {
   text-wrap: balance;
 }
 
+
 button {
   border: 0;
   background-color: #FFF;
@@ -98,10 +99,21 @@ body {
   font-family: var(--ff-red-hat);
 }
 
+
+// global styles
 .container {
   max-width: 1216px;
-  margin: 88px auto;
 }
+
+.dessert-card {
+  border: 0;
+  position: relative;
+
+  button {
+    position: absolute;
+  }
+}
+
 
 
 
