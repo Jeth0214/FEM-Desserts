@@ -4,7 +4,7 @@
     <ul class="list-group border-0 mt-5">
       @for(item of cartItems(); track item.dessert.name) {
         
-        <li class="list-group-item border-0 border-bottom">
+        <li class="list-group-item border-0 border-bottom px-1">
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <p class="fw-bold mb-0">{{item.dessert.name}}</p>
@@ -26,12 +26,21 @@
       }
     </ul>
     
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between my-4">
       <div>Total</div>
-      <div>{{ totalPrice() | currency }}</div>
+      <strong>{{ totalPrice() | currency }}</strong>
     </div>
+
+    <div class="rounded bg-danger-subtle p-4 text-center">
+      <p class="m-0">This is a <strong>carbon-neutral</strong> delivery</p>
+    </div>
+
+    <button class="btn btn-danger d-block w-100 rounded-pill mt-4">Confirm Order</button>
   } 
   @else{
-    <img src="./assets/images/illustration-empty-cart.svg" alt="empty cart" />
+    <div class="text-center mt-3">
+      <img class="img mx-auto" src="./assets/images/illustration-empty-cart.svg" alt="empty cart" />
+      <p>Your added items will appear here</p>
+    </div>
   }
 </div>

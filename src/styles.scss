@@ -84,11 +84,6 @@ h6 {
 }
 
 
-button {
-  border: 0;
-  background-color: #FFF;
-  font-family: inherit;
-}
 
 body {
   /* Add accessible line-height */
@@ -101,16 +96,25 @@ body {
 
 
 // global styles
-.container {
-  max-width: 1216px;
-}
+
 
 .dessert-card {
   border: 0;
   position: relative;
-
-  button {
-    position: absolute;
+  transition: all 0.5s ease;
+  .add-buttons {
+    margin-top: -35px;
+    display: flex;
+    justify-content: center;
+  }
+  .btn {
+    background-color: var(--clr-rose-50);
+    transition: all .5s ease-in-out;
+    &:hover {
+      color: var(--clr-rose-50);
+      background-color: var(--clr-red);
+      border-color: var(--clr-red);
+    }
   }
 }
 
