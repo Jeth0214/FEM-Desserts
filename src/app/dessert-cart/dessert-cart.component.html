@@ -31,16 +31,69 @@
       <strong>{{ totalPrice() | currency }}</strong>
     </div>
 
-    <div class="rounded bg-danger-subtle p-4 text-center">
-      <p class="m-0">This is a <strong>carbon-neutral</strong> delivery</p>
+    <div class="rounded bg-danger-subtle p-4 text-center d-flex align-items-center">
+      <img class="img me-2" src="./assets/images/icon-carbon-neutral.svg" alt="carbon-neutral" />
+      <p class="m-0">
+        This is a <strong>carbon-neutral</strong> delivery
+      </p>
     </div>
 
-    <button class="btn btn-danger d-block w-100 rounded-pill mt-4">Confirm Order</button>
+    <button type="button" class="btn btn-danger d-block w-100 rounded-pill mt-4" data-bs-toggle="modal" data-bs-target="#confirmModal">Confirm Order</button>
   } 
   @else{
     <div class="text-center mt-3">
       <img class="img mx-auto" src="./assets/images/illustration-empty-cart.svg" alt="empty cart" />
       <p>Your added items will appear here</p>
     </div>
-  }
+  } 
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <div>
+            <img src="./assets/images/icon-order-confirmed.svg" alt="confirmed icon">
+            <h2 class="modal-title fs-5 fw-bold mt-2" id="confirmModalLabel">Order Confirm</h2>
+            <p>We hope you enjoy your food!</p>
+        </div>
+     
+      </div>
+      <div class="modal-body ">
+              @for(item of cartItems(); track item.dessert.name) {
+              
+              <div class=" border-bottom px-1 pb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex gap-1">
+                    <picture width="48" height="48">
+                      <source [srcset]="item.dessert.image.mobile" media="(max-width: 600px)">
+                      <source [srcset]="item.dessert.image.tablet" media="(min-width: 600px)">
+                      <source [srcset]="item.dessert.image.desktop" media="(min-width: 1100px)">
+                      <img width="48" height="48" [src]="item.dessert.image.tablet" class="rounded"
+                        [alt]="item.dessert.name">
+                    </picture>
+                    <div>
+                      <p class="fw-bold mb-0">{{item.dessert.name}}</p>
+                      <p class="mb-0">
+                        <span class="text-danger me-3 fw-bold">
+                          {{item.quantity}}x
+                        </span>
+                        &#64; {{item.dessert.price | currency:'USD'}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="fw-bold">
+                    {{item.subtotal | currency:'USD'}}
+                  </div>
+                </div>
+              </div>
+              }
+      </div>
+      <div class="modal-footer d-block border-top-0">
+        <button type="button" class="btn btn-danger d-block w-100 rounded-pill mt-4" data-bs-dismiss="modal">Start New Order</button>
+      </div>
+    </div>
+  </div>
 </div>

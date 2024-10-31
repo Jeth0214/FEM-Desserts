@@ -4,16 +4,16 @@
             <source [srcset]="dessert.image.mobile" media="(max-width: 600px)">
             <source [srcset]="dessert.image.tablet" media="(min-width: 600px)">
             <source [srcset]="dessert.image.desktop" media="(min-width: 1100px)">
-            <img [class.border-danger]="quantity" [src]="dessert.image.tablet" class="border rounded card-img-top img-fluid" [alt]="dessert.name">
+            <img [class.border-danger]="quantity" [src]="dessert.image.tablet" class="rounded card-img-top img-fluid" [alt]="dessert.name">
           </picture>
           <div class="card-body position-relative">
               <!--  buttons -->
-              <div class="add-buttons">
+              <div class="add-buttons mb-3">
                 @if(quantity <= 0) { 
                   <button class="btn btn-outline-danger  rounded-pill py-2 px-3" role="button"
                   (click)="onAddToCart(dessert)">
-                  <i class="fa-solid fa-cart-plus me-1"></i>
-                  Add to Cart
+                    <img class="img me-2" src="./assets/images/icon-add-to-cart.svg" alt="empty cart" />
+                    <span></span>Add to Cart
                 </button>
                   }
                   @else {
