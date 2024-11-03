@@ -20,6 +20,7 @@
 -fw-normal:700;
 }
 
+
 // CSS Reset
 /* Use a more-intuitive box-sizing model */
 *,
@@ -85,6 +86,7 @@ h6 {
 
 
 
+
 body {
   /* Add accessible line-height */
   line-height: 1.5;
@@ -92,10 +94,12 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   font-family: var(--ff-red-hat);
+  background-color: var(--clr-rose-50);
 }
 
 
 // global styles
+
 
 
 .dessert-card {
@@ -130,6 +134,10 @@ body {
     }
   }
 }
+
+
+
+
 
 
 

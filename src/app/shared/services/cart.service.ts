@@ -43,7 +43,13 @@ export class CartService {
       this.cartItems.update(items => items.map(
         item => item.dessert.name === dessert.name ? updatedItem : item))
     }
-   }
+  }
+  
+  // reset cart items
+
+  resetCartItems(): void { 
+    this.cartItems.update( items => []);
+  }
   
 
 }
