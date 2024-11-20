@@ -68,7 +68,7 @@ With this practice, I will solve the Product Feedback App challenge to add on my
 
 ## Author
 
-- Website - [Roland Jethro Suyom](https://jeth0214.github.io/)
+- Website - [Roland Jethro Suyom](https://jeth0214.github.io/JethCode/)
 - Frontend Mentor - [@Jeth0214](https://www.frontendmentor.io/profile/Jeth0214)
 - Twitter - [@RolandJethro](https://x.com/RolandJethro)
 
